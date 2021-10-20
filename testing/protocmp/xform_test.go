@@ -254,7 +254,7 @@ func TestTransform(t *testing.T) {
 	}}
 	for _, tt := range tests {
 		t.Run("", func(t *testing.T) {
-			got := transformMessage(tt.in.ProtoReflect())
+			got := newTransformer().transformMessage(tt.in.ProtoReflect())
 			if diff := cmp.Diff(tt.want, got); diff != "" {
 				t.Errorf("Transform() mismatch (-want +got):\n%v", diff)
 			}
